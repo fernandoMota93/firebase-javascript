@@ -31,6 +31,12 @@ function getTimeStampForCollection() {
 var docRef = db.collection(getTimeStampForCollection().formattedTime)
 
 
+function refreshPage(id) {
+  alert('FIREBASE => Identificador: ' + id + ' atualizado.')
+  location.reload()
+}
+
+
 //Logout SESSION
 function logout() {
     auth.signOut().then(() => {

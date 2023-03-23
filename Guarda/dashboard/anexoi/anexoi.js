@@ -166,6 +166,6 @@ const updateData_I = (id) => {
 
 function refreshPage(id) {
   alert('Identificador: ' + id + ' atualizado.')
-  location.reload();
+  location.reload()
 }
 /***********   UPDATE PART END   ***************/
