@@ -1,3 +1,30 @@
-.paddingtop{
-    padding-top: 15vh;
+div{
+
+    justify-content: center;
+    align-items: center;
+}
+
+.text-height{
+    line-height: 1;
+}
+
+.child {
+    
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+    line-height: 1;
+    height: 18vh;
+
+
+}
+.bounce:hover {
+    animation-name: bounce;
+    animation-timing-function: linear;
+}
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  25%  { transform: translateY(-10px); }
+  75%  { transform: translateY(10px); }
+  100% { transform: translateY(0); }
 }

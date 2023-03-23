@@ -1,4 +1,4 @@
-//Credenciais e constantes
+//API CONFIG FIREBASE
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyBG7_SQwkZUQthlWmDKvfOv1qS-wEwncsI",
     authDomain: "teste-bb8c0.firebaseapp.com",
@@ -8,7 +8,37 @@ const firebaseApp = firebase.initializeApp({
     appId: "1:435693359989:web:06e6157a600f55a8c5b93c"
 })
 
-const db = firebaseApp.firestore();
-const auth = firebaseApp.auth();
+/*********** firebase instance ***********/
+const db = firebaseApp.firestore()
+const auth = firebaseApp.auth()
+/*********** firebase instance ***********/
 
-//VERIFICAR IMPLEMENTAÇÕES RBAC DO FIREBASE
+
+/*********** TIME FOR COLLECTION ***********/
+//System time most be updated
+function getTimeStampForCollection() {
+  var date = new Date(Math.floor(Date.now() / 1000) * 1000)
+  var day = date.getDate()
+  var month = date.getMonth() + 1
+  var year = date.getFullYear()
+  var hourMin = (date.getHours() < 10 ? '0'+ date.getHours() : ''+ date.getHours())  + ':' + (date.getMinutes() < 10 ? '0'+ date.getMinutes() : ''+ date.getMinutes()) 
+  var formattedTime = day + '.' + month + '.' + year
+
+  return { formattedTime, hourMin }
+}
+/*********** TIME FOR COLLECTION ***********/
+
+var docRef = db.collection(getTimeStampForCollection().formattedTime)
+
+
+//Logout SESSION
+function logout() {
+    auth.signOut().then(() => {
+  
+      console.log("User SIGNED OUT");
+      window.location = '../login/login.html'
+  
+    }).catch((error) => {
+      console.log(error)
+    })
+  }

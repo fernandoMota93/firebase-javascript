@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <section class="ftco-section">
+    <div class="ftco-section paddingtop">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-7 col-lg-5">
@@ -42,7 +42,46 @@
                                     <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary rounded submit px-3"
+                                    <div class="row">
+                                        <div class="col">
+                                            <select class="form-control" id="selectRank" required>
+                                                <option value="" disabled selected>Posto/Grad</option>
+                                                <option value="1º Ten">1º Ten</option>
+                                                <option value="2º Ten">2º Ten</option>
+                                                <option value="1º Sgt">1º Sgt</option>
+                                                <option value="2º Sgt">2º Sgt</option>
+                                                <option value="3º Sgt">3º Sgt</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" id="name" class="form-control" required>
+                                            <label class="form-control-placeholder" for="name">Nome completo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="dropdown">
+                                        <label for="selectFunction">Função</label>
+                                        <select class="form-control" id="selectFunction" required>
+                                            <option value="" disabled selected>Selecione...</option>
+                                            <option value="Gestor">Gestor</option>
+                                            <option value="Of Dia">Oficial de Dia</option>
+                                            <option value="Adjunto Of Dia">Adjunto</option>
+                                            <option value="Sgt de dia">Sgt de dia</option>
+                                            <option value="Cmt Gda">Cmt da Guarda</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="dropdown">
+                                        <label for="selectRole" hidden>Papel</label>
+                                        <select class="form-control" id="selectRole" hidden>
+                                            <option value="" disabled selected>Selecione...</option>
+                                            <option value="Admin">Admin</option>
+                                            <option value="User">Usuário</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="form-control btn btn-primary rounded submit px-3 mt-3"
                                         onclick="registerUser()">Cadastrar</button>
                                 </div>
                                 <hr>
@@ -53,35 +92,49 @@
 
                             </form>
                             <div class="text-center">A sessão expira em <span id="time">05:00</span> minutos.</div>
+                            <div class="w-100 text-md-left">
+                                <p class="text text-danger font-italic text-center" id="showError"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <script src="../login/src/js/jquery.min.js"></script>
-    <script src="../login/js/popper.js"></script>
-    <script src="../login/js/bootstrap.min.js"></script>
-    <script src="../login/js/main.js"></script>
-
-
-
-    <div class="main">
-        <div>
-            <label>Email</label>
-            <input name="email" placeholder="Email" id="email1" type="email" />
-        </div>
-        <div>
-            <label>Password</label>
-            <input name="password" placeholder="Password" id="password1" type="password" />
-        </div>
     </div>
 
-    <button onclick="saveData1()">Save Data</button>
-    <button onclick="readData1()">Read Data</button>
-    <button onclick="updateData()">Update one Field</button>
-    <button onclick="deleteData()">Delete one Field</button>
+
+    <!--Table for day content-->
+    <div class="container wrap overflow-auto py-4">
+        <div class="row justify-content-center mb-2 ">
+            <div class="col">
+                <center>
+                    <h3 class="display-6">Usuários no Firestore</h3>
+                </center>
+                <div class="table-repsonsive-lg">
+                    <table class="table table-striped table-success table-hover rounded shadow">
+                        <thead>
+                            <tr>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Função</th>
+                                <th scope="col">Papel</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTable">
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--End table-->
+
+    <script src="../src/js/jquery.min.js"></script>
+    <script src="../src//js/popper.js"></script>
+    <script src="../src/js/bootstrap.min.js"></script>
+    <script src="../src/js/main.js"></script>
 
 </body>
 

@@ -19,3 +19,7 @@ body {
     top: 50%;
     margin-top: 50px;
 }
+
+.dropdown-menu{
+    z-index: 0;
+}

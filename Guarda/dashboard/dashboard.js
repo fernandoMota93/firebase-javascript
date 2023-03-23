@@ -1,118 +1,132 @@
-const signInForm = document.getElementById('signin-form')
+const { jsPDF } = window.jspdf
+
+loginName = document.getElementById('loginName')
 
 //Check Session state
 auth.onAuthStateChanged(function (user) {
-  if (user) {
-    console.log('Usuario logado: ', user.uid)
-  } else {
-    window.location = '../login/login.html'
-  }
+    if (user) {
+        console.log('Usuario logado: ', user.uid)
+        //Verify the firestore data and return name
+        db.collection('users').where('email', '==', user.email)
+            .get()
+            .then(function (query) {
+                if (query.docs.length == 0) {
+                    throw new Error(showError.innerHTML = 'Usuário não está no conjunto de regras. ')
+                }
+                query.forEach(function (doc) {
+                    loginName.innerHTML = 'Bem-vindo, ' + doc.data().name
+                })
+            }).catch(() => {
+                throw new Error()
+            })
+    } else {
+        window.location = '../login/login.html'
+    }
 })
 
+const readCurrentDay = () => {
+    var anexoF=[], anexoI = []
 
-//New instance of time for collection
-function getTimeStampForCollection() {
-  var date = new Date(Math.floor(Date.now() / 1000) * 1000)
-  var day = date.getDay()
-  var month = date.getMonth() + 1
-  var year = date.getFullYear()
-  var hourMin = date.getHours() + ':' + date.getMinutes()
-  var formattedTime = day + '.' + month + '.' + year
+    docRef.where("anexo", "==", "F")
+        .get()
+        .then((query) => {
+            query.forEach((doc) => {
+                anexoF.push([
+                    doc.data().nome,
+                    doc.data().identificacao,
+                    doc.data().veiculo,
+                    doc.data().cor,
+                    doc.data().placa,
+                    doc.data().horario,
+                    doc.data().destino,
+                    doc.data().anotador
+                ])
+            })
+            
+        }).catch((err) => {
+            console.log('Erro ao consultar: ', err)
+        })
 
-  return { formattedTime, hourMin }
+    docRef.where("anexo", "==", "I")
+        .get()
+        .then((query) => {
+            query.forEach((doc) => {
+                anexoI.push([
+                    doc.data().horarioSaida,
+                    doc.data().horarioEntrada,
+                    doc.data().odometroSaida,
+                    doc.data().odometroEntrada,
+                    doc.data().destino,
+                    doc.data().motorista,
+                    doc.data().acompanhante
+                ])
+            })
+
+           gerarPDF(anexoF,anexoI)  
+
+        }).catch((err) => {
+            console.log('Erro ao consultar: ', err)
+        })      
 }
 
-
-//CREATE Data for register, if collection doesn't exist then the collection will be created into firestore 
-const saveData = () => {
-  var nome = document.getElementById('nome').value
-  var identificacao = document.getElementById('identificacao').value
-  var veiculo = document.getElementById('veiculo').value
-  var cor = document.getElementById('cor').value
-  var placa = document.getElementById('placa').value
-  var destino = document.getElementById('destino').value
-  var anotador = document.getElementById('anotador').value
-
-  db.collection(getTimeStampForCollection().formattedTime)
-    .add({
-      nome: nome,
-      identificacao: identificacao,
-      veiculo: veiculo,
-      cor: cor,
-      placa: placa,
-      horario: getTimeStampForCollection().hourMin,
-      destino: destino,
-      anotador: anotador,
-      created_at: Date.now()
+//pdf
+const gerarPDF = (anexoF,anexoI) => {
+    let doc = new jsPDF({
+        orientation: 'l',
+        unit: 'mm',
     })
-    .then((docRef) => {
-      console.log("Documento registrado: ", docRef.id);
-    })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
-}
+    doc.autoTable(
+        {
+            startY: 60,
+            styles: { cellPadding: 0.5, fontSize: 8 },
+            head: [['NOME', 'IDENTIFICAÇÃO', 'VEÍCULO', 'COR', 'PLACA', 'HORÁRIO', 'DESTINO', 'ANOTADOR']],
+            body: anexoF,
 
-//READ Data from collection
-const readData = () => {
-  var dataFire = []
+            didDrawPage: function (data) {
+                doc.setFontSize(12)
+                doc.setFont(undefined, "bold")
+                // Add an image to the header
+                let logo = new Image();
+                logo.src = "../src/images/coat.png"
+                doc.addImage(logo, "png", 130, 8, 20, 20)
+                // Add the text to the header
+                doc.text("MINISTÉRIO DA DEFESA\n EXÉRCITO BRASILEIRO", 116, 30)
+                doc.text("9º Batalhão de Engenharia de Construção\n   Batalhão General Couto de Magalhães\n \nANEXO F - Entrada de veículos sem selo", 100, 40)
+                //footer
+                doc.setFont(undefined, "normal")
+                let pageSize = doc.internal.pageSize
+                let pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight()
+                doc.text('Oficial de Dia', data.settings.margin.left, pageHeight - 10)
+                doc.text('Cmt Gda', 250, pageHeight - 10)
+            }
+        })
+    doc.addPage()
 
-  db.collection('4.3.2023').orderBy("created_at").get().then((query) => {
-    query.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data().nome, doc.data().identificacao)
-      dataFire.push([
-        doc.data().nome,
-        doc.data().identificacao,
-        doc.data().veiculo,
-        doc.data().cor,
-        doc.data().placa,
-        doc.data().horario,
-        doc.data().destino,
-        doc.data().anotador
-      ])
-    })
-    displayDataInTable(dataFire)
+    doc.autoTable(
+        {
+            startY: 60,
+            styles: { cellPadding: 0.5, fontSize: 8 },
+            head: [['HORA DE SAIDA', 'HORA DE ENTRADA', 'ODOMETRO SAIDA', 'ODOMETRO ENTRADA', 'DESTINO', 'MOTORISTA', 'ACOMPANHANTE']],
+            body: anexoI,
 
-  }).catch((err) => {
-    console.log('Erro ao consultar: ', err)
-  })
-}
+            didDrawPage: function (data) {
+                doc.setFontSize(12)
+                doc.setFont(undefined, "bold")
+                // Add an image to the header
+                let logo = new Image();
+                logo.src = "../src/images/coat.png"
+                doc.addImage(logo, "png", 130, 8, 20, 20)
+                // Add the text to the header
+                doc.text("MINISTÉRIO DA DEFESA\n EXÉRCITO BRASILEIRO", 116, 30)
+                doc.text("9º Batalhão de Engenharia de Construção\n   Batalhão General Couto de Magalhães\n \nANEXO I - Entrada e saída de viatura", 100, 40)
+                //footer
+                doc.setFont(undefined, "normal")
+                let pageSize = doc.internal.pageSize
+                let pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight()
+                doc.text('Oficial de Dia', data.settings.margin.left, pageHeight - 10)
+                doc.text('Cmt Gda', 250, pageHeight - 10)
+            }
+        })
 
-
-function displayDataInTable(dataFire) {
-  var table = document.getElementById('dataTable')
-
-  dataFire.forEach((doc) => {
-    var row = table.insertRow()
-    row.setAttribute('id', 'row')
-
-    Object.keys(doc).forEach((key) => {
-      var cell = row.insertCell()
-      cell.innerHTML = doc[key]
-
-    })
-    function insertAfter(newNode, existingNode) {
-      existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
-    }
-
-    let td = document.createElement('td')
-    td.innerHTML =
-      `
-       <button type="button" class="btn btn-primary mb-1"><i class="fa fa-print"></i></button>
-       <button type="button" class="btn btn-success mb-1"><i class="fa fa-edit"></i></button>
-       <button type="button" class="btn btn-danger mb-1"><i class="fa fa-trash"></i></button>
-      `
-    insertAfter(td, row.lastElementChild);
-  })
-}
-
-function logout() {
-  auth.signOut().then(() => {
-
-    console.log("User SIGNED OUT");
-    window.location = '../login/login.html'
-
-  }).catch((error) => {
-    console.log(error)
-  })
+    doc.save('Anexos.pdf')
 }
