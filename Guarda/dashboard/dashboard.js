@@ -1,31 +1,11 @@
 const { jsPDF } = window.jspdf
 
-loginName = document.getElementById('loginName')
 
-//Check Session state
-auth.onAuthStateChanged(function (user) {
-    if (user) {
-        console.log('Usuario logado: ', user.uid)
-        //Verify the firestore data and return name
-        db.collection('users').where('email', '==', user.email)
-            .get()
-            .then(function (query) {
-                if (query.docs.length == 0) {
-                    throw new Error(showError.innerHTML = 'Usuário não está no conjunto de regras. ')
-                }
-                query.forEach(function (doc) {
-                    loginName.innerHTML = 'Bem-vindo, ' + doc.data().name
-                })
-            }).catch(() => {
-                throw new Error()
-            })
-    } else {
-        window.location = '../login/login.html'
-    }
-})
 
+
+//testes para o PDF
 const readCurrentDay = () => {
-    var anexoF=[], anexoI = []
+    var anexoF = [], anexoI = []
 
     docRef.where("anexo", "==", "F")
         .get()
@@ -42,7 +22,7 @@ const readCurrentDay = () => {
                     doc.data().anotador
                 ])
             })
-            
+
         }).catch((err) => {
             console.log('Erro ao consultar: ', err)
         })
@@ -62,15 +42,15 @@ const readCurrentDay = () => {
                 ])
             })
 
-           gerarPDF(anexoF,anexoI)  
+            gerarPDF(anexoF, anexoI)
 
         }).catch((err) => {
             console.log('Erro ao consultar: ', err)
-        })      
+        })
 }
 
 //pdf
-const gerarPDF = (anexoF,anexoI) => {
+const gerarPDF = (anexoF, anexoI) => {
     let doc = new jsPDF({
         orientation: 'l',
         unit: 'mm',

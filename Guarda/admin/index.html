@@ -31,7 +31,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <form action="#" class="signin-form">
+                            <form action="#" id="createDataForm" class="signin-form">
                                 <div class="form-group mt-3">
                                     <input type="text" class="form-control" id="email" required>
                                     <label class="form-control-placeholder" for="username">Email</label>
@@ -81,8 +81,8 @@
                                             <option value="User">Usuário</option>
                                         </select>
                                     </div>
-                                    <button type="button" class="form-control btn btn-primary rounded submit px-3 mt-3"
-                                        onclick="registerUser()">Cadastrar</button>
+                                    <button type="submit"
+                                        class="form-control btn btn-primary rounded submit px-3 mt-3">Cadastrar</button>
                                 </div>
                                 <hr>
                                 <div class="form-group">
@@ -143,6 +143,14 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 <script src="../../firebase.js"></script>
-<script src="admin.js"></script>
 
+<script>
+    //Verify user validation and session Firebase DOCS
+    let myId = ''
+    checkLogin()
+</script>
+
+<script src="adminModel.js"></script>
+<script src="adminView.js"></script>
+<script src="adminController.js"></script>
 </html>
