@@ -41,5 +41,8 @@ function displayDataInTable_Users(dataFromFirestore) {
     })
 }
 
-//Load all the data in table after get and format from firestore
-document.body.onload = readAllUsers()
+const renderError = (error) => {
+    throw new Error(showError.innerHTML = error)
+}
+
+

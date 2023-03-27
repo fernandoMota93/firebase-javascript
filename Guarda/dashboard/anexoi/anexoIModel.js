@@ -1,22 +1,22 @@
 //This function create a document to store, if collection don´t exist
 //then the collection will be created into firestore
 const createData_I = () => {
-
-    let exitTime = document.getElementById('exitTime').value
-    let exitOdometer = document.getElementById('exitOdometer').value
-    let destiny = document.getElementById('destiny').value
-    let driver = document.getElementById('driver').value
-    let escort = document.getElementById('escort').value
-
+    const newData = new AnexoI(
+        exitTime = document.getElementById('exitTime').value,
+        exitOdometer = document.getElementById('exitOdometer').value,
+        destiny = document.getElementById('destiny').value,
+        driver = document.getElementById('driver').value,
+        escort = document.getElementById('escort').value
+    )
     docRef
         .add({
-            horarioSaida: exitTime,
+            horarioSaida: newData.exitTime,
             horarioEntrada: '',
-            odometroSaida: exitOdometer,
+            odometroSaida: newData.exitOdometer,
             odometroEntrada: '',
-            destino: destiny,
-            motorista: driver,
-            acompanhante: escort,
+            destino: newData.destiny,
+            motorista: newData.driver,
+            acompanhante: newData.escort,
             kmTotal: '',
             anexo: 'I'
         })
@@ -29,9 +29,6 @@ const createData_I = () => {
         });
 }
 
-
-//This function read the current day, triggered by "onload event"
-//the return object is never null
 //if there's no data in object the return will be "[]"
 const readCurrentDay_I = () => {
     let dataFromFirestore = []
@@ -63,7 +60,7 @@ const readCurrentDay_I = () => {
 }
 
 //this function call the firestore and put the doc values into the modal for edition 
-const fetchOneDocForUpdate = (id) =>{
+const fetchOneDocForUpdate_I = (id) =>{
     document.getElementById('returnTime').value = getTimeStampForCollection().hourMin
     docRef
         .doc(id)

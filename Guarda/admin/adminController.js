@@ -1,10 +1,15 @@
+let newUser = new ManageUser()
+
 const createDataForm = document.getElementById('createDataForm')
 //const updateDataForm = document.getElementById('editForm')
 
 createDataForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    createUser()
+    newUser.createUser()
 })
+
+//Load all the data in table after get and format from firestore
+document.body.onload = newUser.readAllUsers()
 
 
 //timeout

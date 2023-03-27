@@ -1,13 +1,12 @@
 const userLogin = () => {
-    const username = document.getElementById('username').value
-    const password = document.getElementById('password').value
+    const usrCredentials = new User(document.getElementById('username').value, document.getElementById('password').value)
 
     //call view to render login spinner
     renderSpinner()
     //call control to count the timeout
     controllerTimeOut()
 
-    auth.signInWithEmailAndPassword(username, password)
+    auth.signInWithEmailAndPassword(usrCredentials.username, usrCredentials.password)
         .then((res) => {
             loadSpinner.style.display = 'none'
             db.collection('users').where('email', '==', res.user.email)
@@ -32,9 +31,9 @@ const userLogin = () => {
                 }).catch(() => {
                     throw new Error()
                 })
-            //handlers from documentation
-            //https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithemailandpassword    
         })
+         //handlers from documentation
+         //https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithemailandpassword     
         .catch((err) => {
             if (err.code == 'auth/user-disabled') {
                 console.log(err.message)

@@ -1,25 +1,25 @@
 //This function create a document to store, if collection don´t exist
 //then the collection will be created into firestore
 const createData_F = () => {
-
-    let nome = document.getElementById('nome').value
-    let identificacao = document.getElementById('identificacao').value
-    let veiculo = document.getElementById('veiculo').value
-    let cor = document.getElementById('cor').value
-    let placa = document.getElementById('placa').value
-    let destino = document.getElementById('destino').value
-    let anotador = document.getElementById('anotador').value
-
+    const newData = new AnexoF(
+        nome = document.getElementById('nome').value,
+        identificacao = document.getElementById('identificacao').value,
+        veiculo = document.getElementById('veiculo').value,
+        cor = document.getElementById('cor').value,
+        placa = document.getElementById('placa').value,
+        destino = document.getElementById('destino').value,
+        anotador = document.getElementById('anotador').value
+    )
     docRef
         .add({
-            nome: nome,
-            identificacao: identificacao,
-            veiculo: veiculo,
-            cor: cor,
-            placa: placa,
+            nome: newData.nome,
+            identificacao: newData.identificacao,
+            veiculo: newData.veiculo,
+            cor: newData.cor,
+            placa: newData.placa,
             horario: getTimeStampForCollection().hourMin,
-            destino: destino,
-            anotador: anotador,
+            destino: newData.destino,
+            anotador: newData.anotador,
             created_at: Date.now(),
             updated_at: '',
             anexo: 'F'
@@ -33,9 +33,6 @@ const createData_F = () => {
         });
 }
 
-
-//This function read the current day, triggered by "onload event"
-//the return object is never null
 //if there's no data in object the return will be "[]"
 const readCurrentDay_F = () => {
     let dataFromFirestore = []
@@ -66,7 +63,7 @@ const readCurrentDay_F = () => {
 }
 
 //this function call the firestore and put the doc value into the modal for edition 
-const fetchOneDocForUpdate = (id) =>{
+const fetchOneDocForUpdate_F = (id) =>{
     docRef
         .doc(id)
         .get()

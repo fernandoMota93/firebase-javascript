@@ -27,7 +27,7 @@ function viewDataInTable_I(dataFromFirestore) {
         let td = document.createElement('td')
         td.innerHTML =
             `
-            <button type="button" id="`+ id + `" data-toggle="modal" data-target="#editDataModal" onclick="getDataForUpdateModal_I('` + id + `')" class="btn btn-success mb-1"><i class="fa fa-edit"></i></button>
+            <button type="button" id="`+ id + `" data-toggle="modal" data-target="#editDataModal" onclick="anexoI.renderEditModal('` + id + `')" class="btn btn-success mb-1"><i class="fa fa-edit"></i></button>
             `
         insertAfter(td, row.lastElementChild)
 
@@ -36,7 +36,7 @@ function viewDataInTable_I(dataFromFirestore) {
 
 
 //the button from "displayDataInTable_I()" was clicked and triggered the "#editDataModal"
-const getDataForUpdateModal_I = (id) => {
+const renderEditModal_I = (id) => {
     let updateModal = document.getElementById('updateModal')
     updateModal.innerHTML =
         `
@@ -89,14 +89,10 @@ const getDataForUpdateModal_I = (id) => {
         `
 
     //call the model -> get the document and show data in modal   
-    fetchOneDocForUpdate(id)
+    anexoI.fetchOneDocForUpdate(id)
 
     //call the controller    
     handlerUpdateData(id)
 
 }
 
-//Manipulate the DOM after load the page
-document.body.onload = readCurrentDay_I(),
-    //put this as a helper for the user input in the "createData" form
-    document.getElementById('exitTime').value = getTimeStampForCollection().hourMin

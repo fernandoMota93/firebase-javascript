@@ -25,7 +25,7 @@ const viewDataInTable_F = (dataFromFirestore) =>{
         let td = document.createElement('td')
         td.innerHTML =
             `
-         <button type="button" id="`+ id + `" data-toggle="modal" data-target="#editDataModal" onclick="getDataForEditModal_F('` + id + `')" class="btn btn-success mb-1"><i class="fa fa-edit"></i></button>
+         <button type="button" id="`+ id + `" data-toggle="modal" data-target="#editDataModal" onclick="anexoF.renderEditModal('` + id + `')" class="btn btn-success mb-1"><i class="fa fa-edit"></i></button>
         `
         insertAfter(td, row.lastElementChild)
 
@@ -33,7 +33,7 @@ const viewDataInTable_F = (dataFromFirestore) =>{
 }
 
 //This function get one element for edition
-const getDataForEditModal_F = (id) => {
+const renderEditModal_F = (id) => {
 
     let updateModal = document.getElementById('updateModal')
     updateModal.innerHTML =
@@ -96,13 +96,8 @@ const getDataForEditModal_F = (id) => {
         </div>
         `
     //call the model -> get the document and show data in modal   
-    fetchOneDocForUpdate(id)
+    anexoF.fetchOneDocForUpdate(id)
 
     //call the controller -> 
     handlerUpdateData(id)
 }
-
-
-
-//Load all the data in table after get and format from firestore
-document.body.onload = readCurrentDay_F()
