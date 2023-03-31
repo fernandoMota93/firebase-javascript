@@ -50,7 +50,7 @@ function checkLogin() {
             if (doc.data().role == 'admin') {
               console.log('ADMIN LOGADO')
             }
-            if (doc.data().role == 'user' && window.location.pathname == '/Guarda/dashboard/') {
+            if (doc.data().role == 'user' && window.location.pathname == '/Guarda/dashboard/menu/') {
               console.log('USUARIO LOGADO')
               loginName.innerHTML = doc.data().name
               loginPapel.innerHTML = 'Nivel: ' + doc.data().role

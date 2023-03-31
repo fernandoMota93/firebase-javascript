@@ -1,12 +1,9 @@
 const { jsPDF } = window.jspdf
 
 
-
-
 //testes para o PDF
-const readCurrentDay = () => {
+const readCurrentDayCollection = () => {
     var anexoF = [], anexoI = []
-
     docRef.where("anexo", "==", "F")
         .get()
         .then((query) => {

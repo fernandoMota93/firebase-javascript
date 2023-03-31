@@ -26,7 +26,7 @@ const userLogin = () => {
                         }
                         if (doc.data().role == 'user') {
                             auth.setPersistence(firebase.auth.Auth.Persistence.SESSION) //persist SESSION while tab is open
-                            window.location = '../dashboard/'
+                            window.location = '../dashboard/menu/'
                         }
                         else {
                             renderError('Acesso negado! É provavel que seu acesso foi revogado por um administrador. Papel funcional: ' + doc.data().role.toUpperCase())

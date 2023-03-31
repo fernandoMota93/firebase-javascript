@@ -42,9 +42,6 @@ const createData_D = () => {
                 console.error("Error adding document: ", error);
             });
     }
-
-
-
 }
 
 //if there's no data in object the return will be "[]"

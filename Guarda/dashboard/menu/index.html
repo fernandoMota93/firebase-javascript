@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="../../src/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="../src/js/jspdf.es.min.js"></script>
-    <script type="module" src="../src/js/jspdf.plugin.autotable.js"></script>
+    <script src="../../src/js/jspdf.es.min.js"></script>
+    <script type="module" src="../../src/js/jspdf.plugin.autotable.js"></script>
     <title>Sentinela</title>
 </head>
 
@@ -17,20 +17,21 @@
 
 
 <body>
+    <div id="progress"></div>
     <main class="container-lg padding-login">
         <div class="wrap row d-block credential-card" style="width:100%; margin: auto;">
             <div class="card my-4 mx-4 p-2 d-flex align-items-start justify-content-center ">
                 <h5 class="mb-0">CREDENCIAL DE ACESSO</h5>
-                <p class="my-0 py-0 text text-left" ><small id="loginName"></small> </p>
-                <p class="my-0 text text-left" ><small id="loginPapel"></small> </p>
-                <p class="my-0 text text-left" ><small id="loginFuncao"></small> </p>
-                <p class="my-0 text text-left" ><small id="loginDia"></small> </p>
-                <p class="my-0 text text-left" ><small id="loginHora"></small></p>
+                <p class="my-0 py-0 text text-left"><small id="loginName"></small> </p>
+                <p class="my-0 text text-left"><small id="loginPapel"></small> </p>
+                <p class="my-0 text text-left"><small id="loginFuncao"></small> </p>
+                <p class="my-0 text text-left"><small id="loginDia"></small> </p>
+                <p class="my-0 text text-left"><small id="loginHora"></small></p>
             </div>
         </div>
 
         <div class="row mt-3 ml-5 mr-5 flex">
-            <div class=" col-xl-2 col-lg-3 col-md-4 col-sm-12 ">
+            <div class=" col-xl-3 col-lg-3 col-md-4 col-sm-12 ">
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
                     <a class=" card-block stretched-link text-decoration-none" href>
                         <i class="fa fa-cogs fa-3x" aria-hidden="true"></i>
@@ -63,9 +64,9 @@
                 </div>
 
             </div>
-            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12 ">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 ">
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" href>
+                    <a class=" card-block stretched-link text-decoration-none" href="../anexod/">
                         <i class="fa fa-id-card fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">ANEXO D</h5>
@@ -73,7 +74,7 @@
                 </div>
 
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" href="./anexoe/">
+                    <a class=" card-block stretched-link text-decoration-none" href="../anexoe/">
                         <i class="fa fa-users fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">ANEXO E</h5>
@@ -81,7 +82,7 @@
                 </div>
 
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" href="./anexof/index.html">
+                    <a class=" card-block stretched-link text-decoration-none" href="../anexof/">
                         <i class="fa fa-car fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">ANEXO F</h5>
@@ -89,7 +90,7 @@
                 </div>
 
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" href>
+                    <a class=" card-block stretched-link text-decoration-none" href="../anexog/">
                         <i class="fa fa-moon-o fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">ANEXO G</h5>
@@ -98,10 +99,10 @@
 
             </div>
 
-            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 align-self-start">
 
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" href="./anexoh/">
+                    <a class=" card-block stretched-link text-decoration-none" href="../anexoh/">
                         <i class="fa fa-truck fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">ANEXO H</h5>
@@ -109,13 +110,13 @@
                 </div>
 
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" href="./anexoi/">
+                    <a class=" card-block stretched-link text-decoration-none" href="../anexoi/">
                         <i class="fa fa-location-arrow fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">ANEXO I</h5>
                     <p class="my-0  text text-center"><small>Entrada e Saída da viatura de dia</small></p>
                 </div>
-
+                <!--
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
                     <a class=" card-block stretched-link text-decoration-none" href>
                         <i class="fa fa-location-arrow fa-3x" aria-hidden="true" style="color: blue;"></i>
@@ -123,9 +124,9 @@
                     <h5 class="mb-0">GUARNIÇÃO</h5>
                     <p class="my-0  text text-center"><small>Guarnição para hoje</small></p>
                 </div>
-
+                -->
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" type="button" onclick="readCurrentDay()">
+                    <a class=" card-block stretched-link text-decoration-none" type="button" id="btnRead">
                         <i class="fa fa-newspaper-o fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">RELATÓRIOS</h5>
@@ -135,16 +136,16 @@
 
         </div>
     </main>
-    <script src="../src/js/jquery.min.js"></script>
-    <script src="../src/js/popper.js"></script>
-    <script src="../src/js/bootstrap.min.js"></script>
-    <script src="../src/js/main.js"></script>
+    <script src="../../src/js/jquery.min.js"></script>
+    <script src="../../src/js/popper.js"></script>
+    <script src="../../src/js/bootstrap.min.js"></script>
+    <script src="../../src/js/main.js"></script>
 
     <!--FIREBASE-->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
-    <script src="../../firebase.js"></script>
+    <script src="../../../firebase.js"></script>
 
     <script>
         const showError = document.getElementById('showError')
@@ -153,11 +154,14 @@
         checkLogin()
     </script>
 
-    <script src="dashboard.js"></script>
+    <script src="entities/Dashboard.js"></script>
+    <script src="dashboardModel.js"></script>
+    <script src="dashboardView.js"></script>
+    <script src="dashboardController.js"></script>
 </body>
 
 <footer class="text-center text-lg-start bg-light text-muted" id='footer'></footer>
-<script src="../src/components/header.js"></script>
-<script src="../src/components/footer.js"></script>
+<script src="../../src/components/header.js"></script>
+<script src="../../src/components/footer.js"></script>
 
 </html>
