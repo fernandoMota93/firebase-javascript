@@ -34,7 +34,7 @@ function getTimeStampForCollection() {
 function checkLogin() {
   auth.onAuthStateChanged(function (user) {
     if (user == null) {
-      window.location = '/Guarda/login/login.html'
+      window.location = '/Guarda/src/components/error.html?err=401'
     }
     let loginName = document.getElementById('loginName')
     myId = user.uid
@@ -47,21 +47,25 @@ function checkLogin() {
             if (!doc.exists) {
               throw new Error(showError.innerHTML = 'Usuário não está no conjunto de regras. ')
             }
-            if (doc.data().role == 'admin') { 
+            if (doc.data().role == 'admin') {
               console.log('ADMIN LOGADO')
             }
             if (doc.data().role == 'user' && window.location.pathname == '/Guarda/dashboard/') {
               console.log('USUARIO LOGADO')
               loginName.innerHTML = doc.data().name
+              loginPapel.innerHTML = 'Nivel: ' + doc.data().role
+              loginFuncao.innerHTML = 'Papel funcional: ' + doc.data().function
+              loginDia.innerHTML = 'Dia: ' + getTimeStampForCollection().formattedTime
+              loginHora.innerHTML = 'Hora do servidor: ' + getTimeStampForCollection().hourMin
             }
             if (doc.data().role == 'user' && window.location.pathname == '/Guarda/admin/') {
               alert('Modulo não acessivel para seu perfil')
               logout()
-            } 
+            }
           })
         })
     } catch (error) {
-      window.location = '../login/login.html'
+      window.location = '/Guarda/src/components/error.html'
       throw new Error(alert('401 - Desconectado.', error))
     }
   })

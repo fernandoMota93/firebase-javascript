@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	
+
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -36,23 +36,23 @@
 									</p>
 								</div>
 							</div>
-							<form action="#" onsubmit="userLogin()" class="signin-form" id="signin-form" method="post">
+							<form action="#" class="signin-form" id="signin-form" method="post">
 								<div class="form-group mt-3">
 									<input type="text" class="form-control" id="username" required>
 									<label class="form-control-placeholder" for="username">Email</label>
 								</div>
 								<div class="form-group">
-									<input  type="password" id="password" class="form-control" required>
+									<input type="password" id="password" class="form-control" required>
 									<label class="form-control-placeholder" for="password">Senha</label>
-									<span toggle="#password"
-										class="fa fa-fw fa-eye field-icon toggle-password"></span>
+									<span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 								</div>
 								<div class="form-group">
-									<button type="submit" class="form-control btn btn-primary rounded submit px-3 " >Login</button>
+									<button type="submit"
+										class="form-control btn btn-primary rounded submit px-3 ">Login</button>
 									<div class="loadSpinner" id="loadSpinner" style="display: none;"></div>
 								</div>
 								<div class="form-group d-md-block d-block">
-									
+
 									<div class="w-100 text-md-left">
 										<a href="#">Esqueci minha senha</a>
 									</div>
@@ -74,19 +74,24 @@
 	<script src="../src/js/popper.js"></script>
 	<script src="../src/js/bootstrap.min.js"></script>
 	<script src="../src/js/main.js"></script>
-	
+
 	<!--FIREBASE-->
 	<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 	<script src="../../firebase.js"></script>
+
+
+	<script src="entities/User.js"></script>
+	<script src="loginModel.js"></script>
+	<script src="loginView.js"></script>
+	<script src="loginController.js"></script>
+
 	
 
-    <script src="entities/User.js"></script>
-    <script src="loginModel.js"></script>
-    <script src="loginView.js"></script>
-    <script src="loginController.js"></script>
-
 </body>
+
+<footer class="text-center text-lg-start bg-light text-muted" id='footer'> </footer>
+<script src="../src/components/footer.js"></script>
 
 </html>

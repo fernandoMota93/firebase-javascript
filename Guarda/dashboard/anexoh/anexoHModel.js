@@ -1,24 +1,28 @@
 //This function create a document to store, if collection don´t exist
 //then the collection will be created into firestore
-const createData_I = () => {
-    const newData = new AnexoI(
-        exitTime = document.getElementById('exitTime').value,
-        exitOdometer = document.getElementById('exitOdometer').value,
-        destiny = document.getElementById('destiny').value,
-        driver = document.getElementById('driver').value,
-        escort = document.getElementById('escort').value
+const createData_H = () => {
+    const newData = new AnexoH(
+        prefixo = document.getElementById('prefix').value,
+        horarioSaida = document.getElementById('exitTime').value,
+        odometroSaida = document.getElementById('exitOdometer').value,
+        destino = document.getElementById('destiny').value,
+        motorista = document.getElementById('driver').value,
+        acompanhante =  document.getElementById('escort').value
     )
     docRef
         .add({
-            horarioSaida: newData.exitTime,
+            prefixo: newData.prefixo,
+            horarioSaida: newData.horarioSaida,
             horarioEntrada: '',
-            odometroSaida: newData.exitOdometer,
+            odometroSaida: newData.odometroSaida,
             odometroEntrada: '',
-            destino: newData.destiny,
-            motorista: newData.driver,
-            acompanhante: newData.escort,
-            kmTotal: '',
-            anexo: 'I'
+            kmTotal:'',
+            destino: newData.destino,
+            motorista: newData.motorista,
+            acompanhante: newData.acompanhante,
+            created_at: Date.now(),
+            updated_at: '',
+            anexo: 'H'
         })
         .then((docRef) => {
             console.log("Documento registrado: ", docRef.id);
@@ -30,55 +34,56 @@ const createData_I = () => {
 }
 
 //if there's no data in object the return will be "[]"
-const readCurrentDay_I = () => {
+const readCurrentDay_H = () => {
     let dataFromFirestore = []
 
-    docRef.where("anexo", "==", "I")
+    docRef.where("anexo", "==", "H")
         .get()
         .then((query) => {
             query.forEach((doc) => {
                 dataFromFirestore.push([
                     doc.id,
+                    doc.data().prefixo,
                     doc.data().horarioSaida,
                     doc.data().horarioEntrada,
                     doc.data().odometroSaida,
                     doc.data().odometroEntrada,
+                    doc.data().kmTotal,
                     doc.data().destino,
                     doc.data().motorista,
                     doc.data().acompanhante,
-                    doc.data().kmTotal
                 ])
             })
-            console.log(dataFromFirestore)
 
-            //return to view
-            return viewDataInTable_I(dataFromFirestore)
+            return viewDataInTable_H(dataFromFirestore)
 
         }).catch((err) => {
             throw new Error(err,'Erro ao consultar: ', window.location = '../../login/login.html')
         })
 }
 
-//this function call the firestore and put the doc values into the modal for edition 
-const fetchOneDocForUpdate_I = (id) =>{
-    document.getElementById('returnTime').value = getTimeStampForCollection().hourMin
+//this function call the firestore and put the doc value into the modal for edition 
+const fetchOneDocForUpdate_H = (id) =>{
     docRef
         .doc(id)
         .get()
         .then((doc) => {
             if (doc.exists) {
+                document.getElementById('showExitTime').innerHTML = doc.data().horarioSaida
                 document.getElementById('showExitOdometer').innerHTML = doc.data().odometroSaida
-                document.getElementById('showExitTime').innerHTML = ' ' + doc.data().horarioSaida
+                document.getElementById('returnTime').value = getTimeStampForCollection().hourMin
+                
+            } else {
+                console.log("Objeto não encontrado")
             }
         }).catch((err) => {
             console.log("Erro ao retornar documento:", err)
         })
-
 }
 
 
 //This function update the current document from id
-const updateData_I = (id) => {
+const updateData_H = (id) => {
     docRef
         .doc(id)
         .update({
@@ -89,14 +94,10 @@ const updateData_I = (id) => {
             updated_at: Date.now()
         })
         .then(() => {
-            HandlerRefreshPage(id)
+            refreshPage(id)
+           
         }).catch((err) => {
             console.log(err)
         })
 }
-
-
-
-
-
 

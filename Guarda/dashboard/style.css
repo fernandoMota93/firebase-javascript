@@ -1,5 +1,16 @@
-div{
 
+@media screen and (min-width: 1000px){
+    .credential-card{
+        width: 50%!important;
+    }
+}
+@media screen and (max-width: 700px){
+    .credential-card{
+        width: 100%!important;
+    }
+}
+
+div{
     justify-content: center;
     align-items: center;
 }
@@ -7,6 +18,12 @@ div{
 .text-height{
     line-height: 1;
 }
+
+.padding-login{
+    padding-top: 10vh;
+}
+
+
 
 .child {
     

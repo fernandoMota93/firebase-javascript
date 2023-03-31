@@ -1,8 +1,10 @@
+let usrCredentials = new User()
 const signInForm = document.getElementById('signin-form')
 
 
 signInForm.addEventListener('submit', (e) => {
     e.preventDefault()
+    usrCredentials.userLogin()
     signInForm.reset()
 })
 

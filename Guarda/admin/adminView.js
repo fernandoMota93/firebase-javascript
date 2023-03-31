@@ -26,13 +26,13 @@ function displayDataInTable_Users(dataFromFirestore) {
         if (row.lastElementChild.innerText == 'locked') {
             td.innerHTML =
                 `
-                <button type="button" id="`+ id + `" onclick="unLockUser('` + id + `')" class="btn btn-warning mb-1"><i class="fa fa-unlock"></i></button>
+                <button type="button" id="`+ id + `" onclick="manageUser.unlockUser('` + id + `')" class="btn btn-warning mb-1"><i class="fa fa-unlock"></i></button>
                 <button type="button" id="`+ id + `" onclick="editUser('` + id + `')" class="btn btn-success mb-1"><i class="fa fa-pencil"></i></button>
                 `
         } else {
             td.innerHTML =
                 `
-                <button type="button" id="`+ id + `" onclick="checkUsrFrst('` + id + `')" class="btn btn-danger mb-1"><i class="fa fa-lock"></i></button>
+                <button type="button" id="`+ id + `" onclick="manageUser.lockUser('` + id + `')" class="btn btn-danger mb-1"><i class="fa fa-lock"></i></button>
                 <button type="button" id="`+ id + `" onclick="editUser('` + id + `')" class="btn btn-success mb-1"><i class="fa fa-pencil"></i></button>
                 `
         }
@@ -44,5 +44,3 @@ function displayDataInTable_Users(dataFromFirestore) {
 const renderError = (error) => {
     throw new Error(showError.innerHTML = error)
 }
-
-

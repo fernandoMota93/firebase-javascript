@@ -13,37 +13,24 @@
     <title>Sentinela</title>
 </head>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="../src/images/badge.png" width="30" height="30" alt="">Sentinela
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Gerar Ficha</a>
-            </div>
-        </div>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="button" onclick="logout()">Sair do
-                sistema</button>
-        </form>
-    </nav>
-</header>
+<header id="header"> </header>
 
 
 <body>
-    <main class="container-lg">
-        <div class="wrap row flex mt-3" style="width:50%; margin: auto;">
-            <p class="text text-center mb-0" id="loginName"></p>
+    <main class="container-lg padding-login">
+        <div class="wrap row d-block credential-card" style="width:100%; margin: auto;">
+            <div class="card my-4 mx-4 p-2 d-flex align-items-start justify-content-center ">
+                <h5 class="mb-0">CREDENCIAL DE ACESSO</h5>
+                <p class="my-0 py-0 text text-left" ><small id="loginName"></small> </p>
+                <p class="my-0 text text-left" ><small id="loginPapel"></small> </p>
+                <p class="my-0 text text-left" ><small id="loginFuncao"></small> </p>
+                <p class="my-0 text text-left" ><small id="loginDia"></small> </p>
+                <p class="my-0 text text-left" ><small id="loginHora"></small></p>
+            </div>
         </div>
 
         <div class="row mt-3 ml-5 mr-5 flex">
-            <div class="col-lg-2 col-md-4 col-sm-12 ">
+            <div class=" col-xl-2 col-lg-3 col-md-4 col-sm-12 ">
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
                     <a class=" card-block stretched-link text-decoration-none" href>
                         <i class="fa fa-cogs fa-3x" aria-hidden="true"></i>
@@ -76,7 +63,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-2 col-md-4 col-sm-12 ">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12 ">
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
                     <a class=" card-block stretched-link text-decoration-none" href>
                         <i class="fa fa-id-card fa-3x" aria-hidden="true"></i>
@@ -86,7 +73,7 @@
                 </div>
 
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" href>
+                    <a class=" card-block stretched-link text-decoration-none" href="./anexoe/">
                         <i class="fa fa-users fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">ANEXO E</h5>
@@ -111,10 +98,10 @@
 
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-12">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
 
                 <div class="card my-4 mx-4 p-2 d-flex align-items-center justify-content-center child bounce">
-                    <a class=" card-block stretched-link text-decoration-none" href="#">
+                    <a class=" card-block stretched-link text-decoration-none" href="./anexoh/">
                         <i class="fa fa-truck fa-3x" aria-hidden="true"></i>
                     </a>
                     <h5 class="mb-0">ANEXO H</h5>
@@ -165,8 +152,12 @@
         let myId = ''
         checkLogin()
     </script>
-    
+
     <script src="dashboard.js"></script>
 </body>
+
+<footer class="text-center text-lg-start bg-light text-muted" id='footer'></footer>
+<script src="../src/components/header.js"></script>
+<script src="../src/components/footer.js"></script>
 
 </html>

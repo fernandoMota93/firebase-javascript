@@ -2,7 +2,7 @@
 //Then, store in firestore the user detail and roles
 const createUser = () => {
     //new entity instance
-    const newUser = new NewUser(
+    const newUser = new ManageUser(
         document.getElementById('email').value,
         document.getElementById('password').value,
         document.getElementById('selectFunction').value,

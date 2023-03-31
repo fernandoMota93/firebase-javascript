@@ -17,12 +17,13 @@ class ManageUser {
         return readAllUsers()
     }
 
-    lockUser(){
-
+    lockUser(id){
+        //adminModel
+        return checkUsrFrst(id)
     }
 
-    unlockUser(){
-
+    unlockUser(id){
+        return unLockUser(id)
     }
 
 
