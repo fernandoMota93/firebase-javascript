@@ -1,0 +1,76 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": "Guarda",
+    "ignore": [
+      "**/.*",
+      "**/node_modules/**",
+      ".vscode/**"
+    ],
+    "rewrites": [
+      {
+        "source": "Guarda/firebase-config.js",
+        "destination": "/firebase-config.js"
+      },
+      {
+        "source": "/Guarda/login/login.html",
+        "destination": "/login/login.html"
+      },
+      {
+        "source": "/Guarda/login/style.css",
+        "destination": "/login/style.css"
+      },
+      {
+        "source": "Guarda/src/images/back.png",
+        "destination": "/src/images/back.png"
+      },
+      {
+        "source": "Guarda/src/components/footer.js",
+        "destination": "/src/components/footer.js"
+      },
+      {
+        "source": "Guarda/src/js/jquery.min.js",
+        "destination": "/src/js/jquery.min.js"
+      },
+      {
+        "source": "Guarda/src/css/style.css",
+        "destination": "/src/css/style.css"
+      },
+      {
+        "source": "Guarda/src/js/popper.js",
+        "destination": "/src/js/popper.js"
+      },
+      {
+        "source": "Guarda/src/js/bootstrap.min.js",
+        "destination": "/src/js/bootstrap.min.js"
+      },
+      {
+        "source": "Guarda/src/js/main.js",
+        "destination": "/src/js/main.js"
+      },
+      {
+        "source": "Guarda/login/entities/User.js",
+        "destination": "/login/entities/User.js"
+      },
+      {
+        "source": "Guarda/login/loginView.js",
+        "destination": "/login/loginView.js"
+      },
+      {
+        "source": "Guarda/login/loginController.js",
+        "destination": "/login/loginController.js"
+      },
+      {
+        "source": "Guarda/login/loginModel.js",
+        "destination": "/login/loginModel.js"
+      },
+      {
+        "source": "Guarda/dashboard/menu/",
+        "destination": "/dashboard/menu/"
+      }
+    ]
+  }
+}

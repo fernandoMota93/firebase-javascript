@@ -2,24 +2,24 @@
 //then the collection will be created into firestore
 const createData_F = () => {
     const newData = new AnexoF(
-        nome = document.getElementById('nome').value,
-        identificacao = document.getElementById('identificacao').value,
-        veiculo = document.getElementById('veiculo').value,
-        cor = document.getElementById('cor').value,
-        placa = document.getElementById('placa').value,
-        destino = document.getElementById('destino').value,
-        anotador = document.getElementById('anotador').value
+        name = document.getElementById('nome').value,
+        identification = document.getElementById('identificacao').value,
+        vehicle = document.getElementById('veiculo').value,
+        color = document.getElementById('cor').value,
+        tag = document.getElementById('placa').value,
+        destiny = document.getElementById('destino').value,
+        responsible = document.getElementById('anotador').value
     )
     docRef
         .add({
-            nome: newData.nome,
-            identificacao: newData.identificacao,
-            veiculo: newData.veiculo,
-            cor: newData.cor,
-            placa: newData.placa,
+            nome: newData.name,
+            identificacao: newData.identification,
+            veiculo: newData.vehicle,
+            cor: newData.color,
+            placa: newData.tag,
             horario: getTimeStampForCollection().hourMin,
-            destino: newData.destino,
-            anotador: newData.anotador,
+            destino: newData.destiny,
+            anotador: newData.responsible,
             created_at: Date.now(),
             updated_at: '',
             anexo: 'F'

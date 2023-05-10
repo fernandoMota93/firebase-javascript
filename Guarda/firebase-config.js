@@ -5,13 +5,14 @@ const firebaseApp = firebase.initializeApp({
   projectId: "teste-bb8c0",
   storageBucket: "teste-bb8c0.appspot.com",
   messagingSenderId: "435693359989",
-  appId: "1:435693359989:web:06e6157a600f55a8c5b93c"
+  appId: "1:435693359989:web:06e6157a600f55a8c5b93c",
 })
 
 /*********** firebase instance ***********/
 const db = firebaseApp.firestore()
 const auth = firebaseApp.auth()
-const docRef = db.collection(getTimeStampForCollection().formattedTime)
+  const docRef = db.collection(getTimeStampForCollection().formattedTime)
+const docRefMinusOne = db.collection(getTimeStampForCollection().formattedDayMinusTime)
 /*********** firebase instance ***********/
 
 
@@ -24,8 +25,9 @@ function getTimeStampForCollection() {
   var year = date.getFullYear()
   var hourMin = (date.getHours() < 10 ? '0' + date.getHours() : '' + date.getHours()) + ':' + (date.getMinutes() < 10 ? '0' + date.getMinutes() : '' + date.getMinutes())
   var formattedTime = day + '.' + month + '.' + year
+  var formattedDayMinusTime = day - 1 + '.' + month + '.' + year
 
-  return { formattedTime, hourMin }
+  return { formattedTime, hourMin, formattedDayMinusTime }
 }
 /*********** TIME FOR COLLECTION ***********/
 
@@ -34,7 +36,7 @@ function getTimeStampForCollection() {
 function checkLogin() {
   auth.onAuthStateChanged(function (user) {
     if (user == null) {
-      window.location = '/Guarda/src/components/error.html?err=401'
+      window.location = '/src/components/error.html?err=401'
     }
     let loginName = document.getElementById('loginName')
     myId = user.uid
@@ -50,7 +52,7 @@ function checkLogin() {
             if (doc.data().role == 'admin') {
               console.log('ADMIN LOGADO')
             }
-            if (doc.data().role == 'user' && window.location.pathname == '/Guarda/dashboard/menu/') {
+            if (doc.data().role == 'user' && window.location.pathname == '/dashboard/menu/') {
               console.log('USUARIO LOGADO')
               loginName.innerHTML = doc.data().name
               loginPapel.innerHTML = 'Nivel: ' + doc.data().role
@@ -58,14 +60,14 @@ function checkLogin() {
               loginDia.innerHTML = 'Dia: ' + getTimeStampForCollection().formattedTime
               loginHora.innerHTML = 'Hora do servidor: ' + getTimeStampForCollection().hourMin
             }
-            if (doc.data().role == 'user' && window.location.pathname == '/Guarda/admin/') {
+            if (doc.data().role == 'user' && window.location.pathname == '/admin/') {
               alert('Modulo não acessivel para seu perfil')
               logout()
             }
           })
         })
     } catch (error) {
-      window.location = '/Guarda/src/components/error.html'
+      window.location = '/src/components/error.html'
       throw new Error(alert('401 - Desconectado.', error))
     }
   })
@@ -83,7 +85,7 @@ function logout() {
   auth.signOut().then(() => {
 
     console.log("User SIGNED OUT");
-    window.location = '/Guarda/login/login.html'
+    window.location = '/login/login.html'
 
   }).catch((error) => {
     console.log(error)

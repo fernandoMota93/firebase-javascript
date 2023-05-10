@@ -10,9 +10,28 @@
     }
 }
 
+
+.card-botao {
+    width: unset;
+    max-width: 9rem;
+    text-align: center;
+    transition: 0.5s all;
+    min-height: 7rem;
+    user-select: none;
+    text-decoration: none;
+    text-wrap: none;
+}
+
 div{
     justify-content: center;
     align-items: center;
+}
+
+.d-grid{
+    display: grid !important;
+}
+.gap-3{
+    gap: 1rem !important;
 }
 
 .text-height{

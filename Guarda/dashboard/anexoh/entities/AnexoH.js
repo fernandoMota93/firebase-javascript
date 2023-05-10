@@ -1,11 +1,11 @@
 class AnexoH {
-    constructor(prefixo, horarioSaida, odometroSaida, destino, motorista, acompanhante) {
-        this.prefixo = prefixo
-        this.horarioSaida = horarioSaida
-        this.odometroSaida = odometroSaida
-        this.destino = destino
-        this.motorista = motorista
-        this.acompanhante = acompanhante
+    constructor(prefix, exitTime, exitOdometer, destiny, driver, scout) {
+        this.prefix = prefix
+        this.exitTime = exitTime
+        this.exitOdometer = exitOdometer
+        this.destiny = destiny
+        this.driver = driver
+        this.scout = scout
     }
 
     createData() {

@@ -2,7 +2,50 @@ const { jsPDF } = window.jspdf
 
 //testes para o PDF
 const readCurrentDayCollection = () => {
-    let anexoD = [], anexoE = [], anexoF = [], anexoG = [], anexoH = [], anexoI = []
+    let anexoA = [], anexoB = [], anexoC = [], anexoD = [], anexoE = [], anexoF = [], anexoG = [], anexoH = [], anexoI = []
+
+    docRef.where("anexo", "==", "A")
+        .get()
+        .then((query) => {
+            query.forEach((doc) => {
+                anexoA.push([
+                    doc.data().nome,
+                    doc.data().identificacao
+                ])
+            })
+
+        }).catch((err) => {
+            console.log('Erro ao consultar: ', err)
+        })
+
+    docRef.where("anexo", "==", "B")
+        .get()
+        .then((query) => {
+            query.forEach((doc) => {
+                anexoB.push([
+                    doc.data().nome,
+                    doc.data().horario
+                ])
+            })
+
+        }).catch((err) => {
+            console.log('Erro ao consultar: ', err)
+        })
+
+    docRef.where("anexo", "==", "C")
+        .get()
+        .then((query) => {
+            query.forEach((doc) => {
+                anexoC.push([
+                    doc.data().rondante[0],
+                    ['22:00 - 00:00','00:00 - 02:00','02:00 - 04:00','04:00 - 06:00'],
+                    doc.data().rondas
+                ])
+            })
+
+        }).catch((err) => {
+            console.log('Erro ao consultar: ', err)
+        })
 
     docRef.where("anexo", "==", "D")
         .get()
@@ -19,6 +62,24 @@ const readCurrentDayCollection = () => {
         }).catch((err) => {
             console.log('Erro ao consultar: ', err)
         })
+
+    docRefMinusOne.where("anexo", "==", "D")
+        .get()
+        .then((query) => {
+            query.forEach((doc) => {
+                anexoD.push([
+                    doc.data().nome,
+                    doc.data().companhia,
+                    doc.data().horarioEntrada,
+                    doc.data().horarioSaida
+                ])
+            })
+
+        }).catch((err) => {
+            console.log('Erro ao consultar: ', err)
+        })
+
+        
     docRef.where("anexo", "==", "E")
         .get()
         .then((query) => {
@@ -111,7 +172,7 @@ const readCurrentDayCollection = () => {
             })
 
             //controller
-            handleGerarPDF(anexoD, anexoE, anexoF, anexoG, anexoH, anexoI)
+            handleGerarPDF(anexoA, anexoB, anexoC, anexoD, anexoE, anexoF, anexoG, anexoH, anexoI)
 
         }).catch((err) => {
             console.log('Erro ao consultar: ', err)

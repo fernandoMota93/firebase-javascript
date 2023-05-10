@@ -1,12 +1,12 @@
 class AnexoF {
-    constructor(nome, identificacao, veiculo, cor, placa, destino, anotador) {
-        this.nome = nome
-        this.identificacao = identificacao
-        this.veiculo = veiculo
-        this.cor = cor
-        this.placa = placa
-        this.destino = destino
-        this.anotador = anotador
+    constructor(name, identification, vehicle, color, tag, destiny, responsible) {
+        this.name = name
+        this.identification = identification
+        this.vehicle = vehicle
+        this.color = color
+        this.tag = tag
+        this.destiny = destiny
+        this.responsible = responsible
     }
 
     createData() {

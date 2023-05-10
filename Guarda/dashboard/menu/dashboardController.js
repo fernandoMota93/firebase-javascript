@@ -8,7 +8,7 @@ btnRead.addEventListener('click', () =>{
     renderProgressModal()
 })
 
-const handleGerarPDF = (anexoD, anexoE, anexoF, anexoG, anexoH, anexoI) =>{
+const handleGerarPDF = (anexoA, anexoB, anexoC, anexoD, anexoE, anexoF, anexoG, anexoH, anexoI) =>{
     console.log('DOCS OK')
-    dashboard.gerarPDF(anexoD, anexoE, anexoF, anexoG, anexoH, anexoI)
+    dashboard.gerarPDF(anexoA, anexoB, anexoC, anexoD, anexoE, anexoF, anexoG, anexoH, anexoI)
 }

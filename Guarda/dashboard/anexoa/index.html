@@ -36,20 +36,22 @@
                             </div>
                             <form id="createData">
                                 <div class="form-group mt-3">
-                                    <label for="soldierAmount">Quantas sentinelas para hoje?</label>
+                                    <label for="soldierAmount">Quantos postos na guarda para hoje?</label>
                                     <select class="form-control" name="soldierAmount" id="soldierAmount" required>
                                         <option selected disabled>Selecione...</option>
-                                        <option value="9">9</option>
-                                        <option value="12">12</option>
-                                        <option value="15">15</option>
-                                        <option value="18">18</option>
-                                        <option value="21">21</option>
+                                        <option value="3">1</option>
+                                        <option value="6">2</option>
+                                        <option value="9">3</option>
+                                        <option value="12">4</option>
+                                        <option value="15">5</option>
+                                        <option value="18">6</option>
+                                        <option value="21">7</option>
                                     </select>
                                 </div>
                                 <div id="renderAmount"></div>
 
                                 <div class="form-group">
-                                    <button type="submit"
+                                    <button type="button"
                                         class="form-control btn btn-primary rounded submit px-3 mb-2" id="btnRegistar" style="visibility: hidden;">Registrar Guarda
                                     </button>
                                 </div>
@@ -71,9 +73,9 @@
                     <table class="table table-striped table-bordered table-success table-hover rounded shadow">
                         <thead>
                             <tr>
-                                <th scope="col">Grad Nr</th>
-                                <th scope="col">Nome</th>
+                                <th scope="col">P/G - Nr - Nome</th>
                                 <th scope="col">Nr Armamento</th>
+                                <th scope="col">Opções</th>
                             </tr>
 
                         </thead>
@@ -99,15 +101,20 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
-    <script src="../../../firebase.js"></script>
+    <script src="../../firebase-config.js"></script>
 
     <script src="entities/AnexoA.js"></script>
+
     <script src="anexoAModel.js"></script>
     <script src="anexoAView.js"></script>
     <script src="anexoAController.js"></script>
 
     <script src="../../src/components/header.js"></script>
-
+    <script>
+        //Verify user validation and session Firebase DOCS
+        let myId = ''
+        checkLogin()
+    </script>
 
 </body>
 

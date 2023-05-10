@@ -2,24 +2,24 @@
 //then the collection will be created into firestore
 const createData_H = () => {
     const newData = new AnexoH(
-        prefixo = document.getElementById('prefix').value,
-        horarioSaida = document.getElementById('exitTime').value,
-        odometroSaida = document.getElementById('exitOdometer').value,
-        destino = document.getElementById('destiny').value,
-        motorista = document.getElementById('driver').value,
-        acompanhante =  document.getElementById('escort').value
+        prefix = document.getElementById('prefix').value,
+        exitTime = document.getElementById('exitTime').value,
+        exitOdometer = document.getElementById('exitOdometer').value,
+        destiny = document.getElementById('destiny').value,
+        driver = document.getElementById('driver').value,
+        scout =  document.getElementById('escort').value
     )
     docRef
         .add({
-            prefixo: newData.prefixo,
-            horarioSaida: newData.horarioSaida,
+            prefixo: newData.prefix,
+            horarioSaida: newData.exitTime,
             horarioEntrada: '',
-            odometroSaida: newData.odometroSaida,
+            odometroSaida: newData.exitOdometer,
             odometroEntrada: '',
             kmTotal:'',
-            destino: newData.destino,
-            motorista: newData.motorista,
-            acompanhante: newData.acompanhante,
+            destino: newData.destiny,
+            motorista: newData.driver,
+            acompanhante: newData.scout,
             created_at: Date.now(),
             updated_at: '',
             anexo: 'H'

@@ -9,8 +9,8 @@ class Dashboard {
         return readCurrentDayCollection()
     }
 
-    gerarPDF(anexoD, anexoE, anexoF, anexoG, anexoH, anexoI){
+    gerarPDF(anexoA, anexoB, anexoC, anexoD, anexoE, anexoF, anexoG, anexoH, anexoI){
         //view
-        return gerarPDF(anexoD, anexoE, anexoF, anexoG, anexoH, anexoI)
+        return gerarPDF(anexoA, anexoB, anexoC, anexoD, anexoE, anexoF, anexoG, anexoH, anexoI)
     }
 }

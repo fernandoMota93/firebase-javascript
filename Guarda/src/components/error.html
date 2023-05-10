@@ -137,7 +137,7 @@
                 <center> <img src="../images/cristal.png" alt="" class="img-fluid" style="max-height: 400px;">
                     <h1 class="display-5 poppins">ERRO</h1>
                     <h5 class="font-italic" id="typeError">A página está inacessivel</h5>
-                    <a class="btn btn-outline-success" href="/Guarda/login/login.html">Retornar para o login</a>
+                    <a class="btn btn-outline-success" href="/login/login.html">Retornar para o login</a>
                 </center>
             </div>
         </div>
@@ -148,7 +148,7 @@
         const urlParams = new URLSearchParams(queryString)
         const err = urlParams.get('err')
         if (err == '401'){
-            typeError.innerHTML = '401 - Acesso negado pelo servidor'
+            typeError.innerHTML = '401 - Acesso negado pelo servidor<br>"<small>Estão tentando invadir a nossa esmeralda.</small>"'
         }
     </script>
 </body>

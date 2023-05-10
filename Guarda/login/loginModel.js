@@ -1,4 +1,3 @@
-
 const userLogin = () => {
     const usrCredentials = new User(
         document.getElementById('username').value,
@@ -70,3 +69,4 @@ const userLogin = () => {
             }
         })
 }
+
