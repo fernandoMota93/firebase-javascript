@@ -37,9 +37,10 @@ const readCurrentDayCollection = () => {
         .then((query) => {
             query.forEach((doc) => {
                 anexoC.push([
-                    doc.data().rondante[0],
+                    doc.data().rondante,
                     ['22:00 - 00:00','00:00 - 02:00','02:00 - 04:00','04:00 - 06:00'],
-                    doc.data().rondas
+                    doc.data().rondas,
+                    doc.data().posto
                 ])
             })
 

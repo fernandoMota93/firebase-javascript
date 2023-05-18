@@ -11,7 +11,7 @@ const firebaseApp = firebase.initializeApp({
 /*********** firebase instance ***********/
 const db = firebaseApp.firestore()
 const auth = firebaseApp.auth()
-  const docRef = db.collection(getTimeStampForCollection().formattedTime)
+const docRef = db.collection(getTimeStampForCollection().formattedTime)
 const docRefMinusOne = db.collection(getTimeStampForCollection().formattedDayMinusTime)
 /*********** firebase instance ***********/
 

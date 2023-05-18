@@ -13,7 +13,9 @@ const createData_A = () => {
                 anexo: 'A'
             })
             .then((docRef) => {
-                console.log("Documento registrado: ", docRef.id);
+                console.log("Documento registrado: ", docRef.id)
+                alert('Sentinelas Regsitrados')
+                location.reload()
             })
             .catch((error) => {
                 console.error("Error adding document: ", error);

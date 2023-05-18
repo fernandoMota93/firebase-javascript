@@ -22,7 +22,7 @@ const createData_B = (size) => {
             for (let i = 1; i <= size; i++) {
                 let newData = new AnexoB(
                     check = 1,
-                    name = document.getElementById('pg' + i).value +' '+ document.getElementById('name' + i).value,
+                    name = document.getElementById('pg' + i).value + ' ' + document.getElementById('name' + i).value,
                     time = document.getElementById('time' + i).value
                 )
                 docRef
@@ -35,16 +35,15 @@ const createData_B = (size) => {
                     })
                     .then((docRef) => {
                         console.log("Documento registrado: ", docRef.id)
-    
-    
                     })
                     .catch((error) => {
                         console.error("Error adding document: ", error);
                     });
             }
             alert('Anexo B Registrado')
+            //location.reload()
         } catch (error) {
-            alert(error,'Algo deu errado: ')
+            alert(error, 'Algo deu errado: ')
         }
     } else {
         try {
@@ -64,16 +63,17 @@ const createData_B = (size) => {
                     })
                     .then((docRef) => {
                         console.log("Documento registrado: ", docRef.id)
-    
-    
+
+
                     })
                     .catch((error) => {
                         console.error("Error adding document: ", error);
                     });
             }
             alert('Anexo B Registrado')
+            //location.reload()
         } catch (error) {
-            alert(error,'Algo deu errado: ')
+            alert(error, 'Algo deu errado: ')
         }
     }
 

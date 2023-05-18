@@ -724,7 +724,7 @@ const viewDataInTable_C = (sentinelSize, dataFromFirestore) => {
                 return 0;
             });
 
-            console.log(dataFromFirestore)
+            //console.log(dataFromFirestore)
 
             Object.keys(dataFromFirestore).forEach((key) => {
                 p1.push(dataFromFirestore[0][3][key]),

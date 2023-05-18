@@ -1,3 +1,17 @@
+@media screen and (min-width: 700px){
+    .btnEditPrefix, .btnConfirmPrefix{
+        max-width: 5vw;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .btnEditPrefix, .btnConfirmPrefix{
+        max-width: 15vw;
+    }
+}
+
+
 .paddingtop{
     padding-top: 15vh;
 }
+

@@ -55,12 +55,12 @@ const readCurrentDay_I = () => {
             return viewDataInTable_I(dataFromFirestore)
 
         }).catch((err) => {
-            throw new Error(err,'Erro ao consultar: ', window.location = '../../login/login.html')
+            throw new Error(err, 'Erro ao consultar: ', window.location = '../../login/login.html')
         })
 }
 
 //this function call the firestore and put the doc values into the modal for edition 
-const fetchOneDocForUpdate_I = (id) =>{
+const fetchOneDocForUpdate_I = (id) => {
     document.getElementById('returnTime').value = getTimeStampForCollection().hourMin
     docRef
         .doc(id)
@@ -95,7 +95,35 @@ const updateData_I = (id) => {
         })
 }
 
+const updatePrefix_I = () => {
+    docRef
+        .doc('misc')
+        .set({
+            prefixoViatura: document.getElementById("prefix").value,
+        })
+        .then(() => {
+            console.log("Documento registrado: ")
+            alert('Prefixo atualizado')
+        })
+        .catch((error) => {
+            console.error("Error adding document: ", error)
+        })
+}
 
+const getPrefix = () => {
+    docRef
+        .doc('misc')
+        .get()
+        .then((doc) => {
+            if (doc.exists) {
+                //return to view
+                document.getElementById('labelPrefix').innerHTML = doc.data().prefixoViatura
+            }
+        }).catch((err) => {
+            throw new Error(err, 'Erro ao consultar: ', window.location = '../../login/login.html')
+        })
+
+}
 
 
 

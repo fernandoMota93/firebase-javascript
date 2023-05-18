@@ -27,6 +27,10 @@ class AnexoI {
         return fetchOneDocForUpdate_I(id)
     }
 
+    updatePrefix(){
+        return updatePrefix_I()
+    }
+
     updateData(id) {
         return updateData_I(id)
     }
